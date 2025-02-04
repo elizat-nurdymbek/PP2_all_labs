@@ -21,8 +21,30 @@ class Account:
         else:
             print("Insufficient funds or invalid amount.")
 
-acc = Account("John Doe", 100)
-acc.deposit(50)
-acc.withdraw(30)
-acc.withdraw(150) 
+owner = input("Введите имя владельца счета: ")
+initial_balance = int(input("Введите начальный баланс: "))
 
+acc = Account(owner, initial_balance)
+
+while True:
+    print("\nВыберите действие:")
+    print("1. Внести деньги")
+    print("2. Снять деньги")
+    print("3. Проверить баланс")
+    print("4. Выйти")
+    
+    choice = input("Введите номер действия: ")
+    
+    if choice == "1":
+        amount = int(input("Введите сумму депозита: "))
+        acc.deposit(amount)
+    elif choice == "2":
+        amount = int(input("Введите сумму для снятия: "))
+        acc.withdraw(amount)
+    elif choice == "3":
+        print(f"Текущий баланс: {acc.balance}")
+    elif choice == "4":
+        print("Выход из программы. Спасибо!")
+        break
+    else:
+        print("Некорректный ввод. Попробуйте снова.")
